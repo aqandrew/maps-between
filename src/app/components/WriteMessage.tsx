@@ -1,3 +1,10 @@
+import MessageSlot from '@/app/components/MessageSlot';
+
 export default function WriteMessage() {
-	return <p>TODO write message</p>;
+	return (
+		<>
+			<MessageSlot id="templates" label="Templates" />
+			<MessageSlot id="words" label="Words" />
+		</>
+	);
 }
