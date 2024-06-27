@@ -48,6 +48,7 @@ export default function Home() {
 									<Tabs.Trigger
 										value={value}
 										className="data-[state=active]:shadow-[inset_0_-1px_0_0,0_1px_0_0] data-[state=active]:shadow-current data-[state=active]:focus:relative data-[state=active]:focus:shadow-[0_0_0_2px] data-[state=active]:focus:shadow-black"
+										key={value}
 									>
 										{label}
 									</Tabs.Trigger>
@@ -57,7 +58,7 @@ export default function Home() {
 							{TABS.map(({ value, component }) => {
 								const Component = component;
 								return (
-									<Tabs.Content value={value}>
+									<Tabs.Content value={value} key={value}>
 										<Component />
 									</Tabs.Content>
 								);
