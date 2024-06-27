@@ -20,7 +20,7 @@ const TABS: Tab[] = [
 	},
 	{
 		value: 'messages-discovered',
-		label: 'MessagesDiscovered',
+		label: 'Messages Discovered',
 		component: MessagesDiscovered,
 	},
 ];
@@ -43,7 +43,7 @@ export default function Home() {
 						<Dialog.Description />
 
 						<Tabs.Root>
-							<Tabs.List>
+							<Tabs.List className="flex gap-2">
 								{TABS.map(({ value, label }) => (
 									<Tabs.Trigger
 										value={value}
