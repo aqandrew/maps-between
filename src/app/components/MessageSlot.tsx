@@ -1,17 +1,22 @@
-'use client';
-
-import { useState } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
-import { TEMPLATES } from '@/constants';
+import { TEMPLATES, WORDS } from '@/constants';
 
 interface MessageSlotProps {
 	id: string;
 	label: string;
+	string: string;
+	setString: Dispatch<SetStateAction<string>>;
 }
 
-export default function MessageSlot({ id, label }: MessageSlotProps) {
-	// TODO handle words
-	const [template, setTemplate] = useState('');
+export default function MessageSlot({
+	id,
+	label,
+	string,
+	setString,
+}: MessageSlotProps) {
+	// TODO handle words submenus
+	const choices = label === 'Templates' ? TEMPLATES : WORDS.Enemies;
 
 	return (
 		<Dialog.Root>
@@ -25,8 +30,8 @@ export default function MessageSlot({ id, label }: MessageSlotProps) {
 						type="text"
 						name={id}
 						id={id}
-						value={template}
-						onChange={(e) => setTemplate(e.target.value)}
+						value={string}
+						onChange={(e) => setString(e.target.value)}
 						readOnly
 						className="border-2 cursor-pointer"
 					/>
@@ -43,10 +48,10 @@ export default function MessageSlot({ id, label }: MessageSlotProps) {
 					<Dialog.Description />
 
 					<div className="flex flex-col items-center gap-2 overflow-y-scroll">
-						{TEMPLATES.map((t, i) => (
+						{choices.map((t, i) => (
 							<Dialog.Close asChild key={i}>
 								<button
-									onClick={() => setTemplate(t)}
+									onClick={() => setString(t)}
 									className="w-60 bg-gray-200"
 								>
 									{t}
