@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { TEMPLATES, WORDS } from '@/constants';
+import WordList from './WordList';
 
 interface MessageSlotProps {
 	id: string;
@@ -47,18 +48,7 @@ export default function MessageSlot({
 					{/* TODO add dialog description */}
 					<Dialog.Description />
 
-					<div className="flex flex-col items-center gap-2 overflow-y-auto">
-						{choices.map((t, i) => (
-							<Dialog.Close asChild key={i}>
-								<button
-									onClick={() => setString(t)}
-									className="w-60 bg-gray-200"
-								>
-									{t}
-								</button>
-							</Dialog.Close>
-						))}
-					</div>
+					<WordList choices={choices} setWord={setString} />
 				</Dialog.Content>
 			</Dialog.Portal>
 		</Dialog.Root>
