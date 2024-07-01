@@ -47,7 +47,7 @@ export default function MessageSlot({
 					{/* TODO add dialog description */}
 					<Dialog.Description />
 
-					<div className="flex flex-col items-center gap-2 overflow-y-scroll">
+					<div className="flex flex-col items-center gap-2 overflow-y-auto">
 						{choices.map((t, i) => (
 							<Dialog.Close asChild key={i}>
 								<button
