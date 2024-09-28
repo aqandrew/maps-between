@@ -3,8 +3,6 @@ import * as Dialog from '@radix-ui/react-dialog';
 import { CATEGORIES, TEMPLATES, WORDS } from '@/constants';
 import WordList from '@/app/components/WordList';
 
-type Category = keyof typeof WORDS;
-
 interface MessageSlotProps {
 	id: string;
 	label: string;
@@ -18,11 +16,11 @@ export default function MessageSlot({
 	string,
 	setString,
 }: MessageSlotProps) {
-	const [category, setCategory] = useState<Category>(
-		Object.keys(WORDS)[0] as Category
-	);
+	const [category, setCategory] = useState(Object.keys(WORDS)[0]);
 	const isTemplates = label === 'Templates';
-	const choices = isTemplates ? TEMPLATES : WORDS[category];
+	const choices = isTemplates
+		? TEMPLATES
+		: WORDS[category as keyof typeof WORDS];
 
 	return (
 		<Dialog.Root>
