@@ -20,13 +20,21 @@ export default function WriteMessage() {
 	return (
 		<>
 			<span>{message}</span>
-			<MessageSlot
-				id="template"
-				label="Templates"
-				string={template}
-				setString={setTemplate}
-			/>
-			<MessageSlot id="word" label="Words" string={word} setString={setWord} />
+			{/* TODO align MessageSlot inputs with Finish button */}
+			<div className="grid grid-cols-[auto_1fr] gap-y-1 gap-x-16">
+				<MessageSlot
+					id="template"
+					label="Templates"
+					string={template}
+					setString={setTemplate}
+				/>
+				<MessageSlot
+					id="word"
+					label="Words"
+					string={word}
+					setString={setWord}
+				/>
+			</div>
 		</>
 	);
 }

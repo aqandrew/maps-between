@@ -24,8 +24,8 @@ export default function MessageSlot({
 
 	return (
 		<Dialog.Root>
-			<div>
-				<label htmlFor={id} className="cursor-pointer">
+			<div className="grid col-span-full grid-cols-subgrid">
+				<label htmlFor={id} className="justify-self-end cursor-pointer">
 					{label}
 				</label>
 
@@ -37,7 +37,7 @@ export default function MessageSlot({
 						value={string}
 						onChange={(e) => setString(e.target.value)}
 						readOnly
-						className="border-2 cursor-pointer"
+						className="w-60 border-2 cursor-pointer"
 					/>
 				</Dialog.Trigger>
 			</div>

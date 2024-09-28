@@ -69,7 +69,7 @@ export default function Home() {
 
 						<div className="flex justify-center pb-12">
 							<Dialog.Close asChild>
-								<button className="w-48 p-2 bg-gray-200">Finish</button>
+								<button className="w-60 p-1 bg-gray-200">Finish</button>
 							</Dialog.Close>
 						</div>
 					</Dialog.Content>
