@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import * as Tabs from '@radix-ui/react-tabs';
+import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 import WriteMessage from '@/app/components/WriteMessage';
 import MessagesWritten from '@/app/components/MessagesWritten';
 import MessagesDiscovered from '@/app/components/MessagesDiscovered';
@@ -39,8 +40,13 @@ export default function Home() {
 					<Dialog.Content className="fixed top-0 bottom-0 left-48 right-48 flex flex-col bg-white">
 						<Dialog.Title>Messages</Dialog.Title>
 
-						{/* TODO add dialog description */}
-						<Dialog.Description />
+						<VisuallyHidden asChild>
+							<Dialog.Description>
+								Write a new message, view previously written messages, or view
+								messages discovered from others. Click Finish when you&apos;re
+								done.
+							</Dialog.Description>
+						</VisuallyHidden>
 
 						<Tabs.Root>
 							<Tabs.List className="flex gap-2">

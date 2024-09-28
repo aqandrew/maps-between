@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction, useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
+import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 import { CATEGORIES, TEMPLATES, WORDS } from '@/constants';
 import WordList from '@/app/components/WordList';
 
@@ -21,6 +22,7 @@ export default function MessageSlot({
 	const choices = isTemplates
 		? TEMPLATES
 		: WORDS[category as keyof typeof WORDS];
+	const isCategories = choices === CATEGORIES;
 
 	return (
 		<Dialog.Root>
@@ -48,8 +50,12 @@ export default function MessageSlot({
 				<Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[640px] border-2 bg-white">
 					<Dialog.Title className="text-center underline">{label}</Dialog.Title>
 
-					{/* TODO add dialog description */}
-					<Dialog.Description />
+					<VisuallyHidden asChild>
+						<Dialog.Description>
+							Click to select a{' '}
+							{isTemplates ? 'template' : isCategories ? 'category' : 'word'}.
+						</Dialog.Description>
+					</VisuallyHidden>
 
 					<div className="flex gap-10 justify-center">
 						{isTemplates ? null : (
