@@ -11,7 +11,7 @@ type Tab = {
 	component: FC;
 };
 
-const TABS: Tab[] = [
+const TABS: Array<Tab> = [
 	{ value: 'write-message', label: 'Write Message', component: WriteMessage },
 	{
 		value: 'messages-written',

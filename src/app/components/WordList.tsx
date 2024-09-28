@@ -3,7 +3,7 @@ import * as Dialog from '@radix-ui/react-dialog';
 import { CATEGORIES } from '@/constants';
 
 interface WordListProps {
-	choices: string[];
+	choices: Array<string>;
 	setWord: Dispatch<SetStateAction<string>>;
 }
 
