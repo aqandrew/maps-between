@@ -1,7 +1,9 @@
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
-import { TEMPLATES, WORDS } from '@/constants';
-import WordList from './WordList';
+import { CATEGORIES, TEMPLATES, WORDS } from '@/constants';
+import WordList from '@/app/components/WordList';
+
+type Category = keyof typeof WORDS;
 
 interface MessageSlotProps {
 	id: string;
@@ -16,8 +18,11 @@ export default function MessageSlot({
 	string,
 	setString,
 }: MessageSlotProps) {
-	// TODO handle words submenus
-	const choices = label === 'Templates' ? TEMPLATES : WORDS.Enemies;
+	const [category, setCategory] = useState<Category>(
+		Object.keys(WORDS)[0] as Category
+	);
+	const isTemplates = label === 'Templates';
+	const choices = isTemplates ? TEMPLATES : WORDS[category];
 
 	return (
 		<Dialog.Root>
@@ -42,13 +47,20 @@ export default function MessageSlot({
 			<Dialog.Portal>
 				<Dialog.Overlay />
 
-				<Dialog.Content className="fixed inset-36 flex flex-col border-2 bg-white">
+				<Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-60 flex flex-col border-2 bg-white">
 					<Dialog.Title className="text-center underline">{label}</Dialog.Title>
 
 					{/* TODO add dialog description */}
 					<Dialog.Description />
 
-					<WordList choices={choices} setWord={setString} />
+					{/* TODO max-h-full isn't quite the right rule to limit WordList height */}
+					<div className="max-h-full flex-1 flex gap-10 justify-center mx-10">
+						{isTemplates ? null : (
+							<WordList choices={CATEGORIES} setWord={setCategory} />
+						)}
+
+						<WordList choices={choices} setWord={setString} />
+					</div>
 				</Dialog.Content>
 			</Dialog.Portal>
 		</Dialog.Root>

@@ -24,7 +24,7 @@ export const TEMPLATES = [
 	'****!',
 	'****?',
 	'****...',
-];
+] as const;
 
 export const WORDS = {
 	Enemies: [
@@ -69,7 +69,7 @@ export const WORDS = {
 		'skeleton',
 		'monstrosity',
 		'ill-omened creature',
-	],
+	] as const,
 	People: [
 		'Tarnished',
 		'warrior',
@@ -115,7 +115,7 @@ export const WORDS = {
 		'monarch',
 		'lord',
 		'god',
-	],
+	] as const,
 	Things: [
 		'item',
 		'necessary item',
@@ -162,7 +162,7 @@ export const WORDS = {
 		'bloodstain',
 		'Erdtree',
 		'Elden Ring',
-	],
+	] as const,
 	'Battle Tactics': [
 		'close-quarters battle',
 		'ranged battle',
@@ -181,7 +181,7 @@ export const WORDS = {
 		'jumping off',
 		'dashing through',
 		'brief respite',
-	],
+	] as const,
 	Actions: [
 		'attacking',
 		'jump attack',
@@ -205,7 +205,7 @@ export const WORDS = {
 		'target lock',
 		'item crafting',
 		'gesturing',
-	],
+	] as const,
 	Situations: [
 		'morning',
 		'noon',
@@ -249,7 +249,7 @@ export const WORDS = {
 		'looking away',
 		'unnoticed',
 		'out of stamina',
-	],
+	] as const,
 	Places: [
 		'high road',
 		'checkpoint',
@@ -281,7 +281,7 @@ export const WORDS = {
 		'waterside',
 		'nest',
 		'hole',
-	],
+	] as const,
 	Directions: [
 		'east',
 		'west',
@@ -295,7 +295,7 @@ export const WORDS = {
 		'up',
 		'down',
 		'edge',
-	],
+	] as const,
 	'Body Parts': [
 		'head',
 		'stomach',
@@ -306,7 +306,7 @@ export const WORDS = {
 		'tail',
 		'core',
 		'fingers',
-	],
+	] as const,
 	Affinities: [
 		'physical',
 		'standard',
@@ -325,7 +325,7 @@ export const WORDS = {
 		'sleep',
 		'madness',
 		'death',
-	],
+	] as const,
 	Concepts: [
 		'life',
 		'Death',
@@ -386,7 +386,7 @@ export const WORDS = {
 		'fear',
 		'sacrifice',
 		'ruin',
-	],
+	] as const,
 	Phrases: [
 		'good luck',
 		'look carefully',
@@ -418,5 +418,7 @@ export const WORDS = {
 		'beautiful...',
 		`you don't have the right`,
 		'are you ready?',
-	],
+	] as const,
 };
+
+export const CATEGORIES = Object.keys(WORDS);

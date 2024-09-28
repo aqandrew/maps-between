@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
+import { CATEGORIES } from '@/constants';
 
 interface WordListProps {
 	choices: string[];
@@ -7,15 +8,25 @@ interface WordListProps {
 }
 
 export default function WordList({ choices, setWord }: WordListProps) {
+	const isCategories = choices === CATEGORIES;
+
 	return (
 		<div className="flex flex-col items-center gap-2 overflow-y-auto">
-			{choices.map((choice, i) => (
-				<Dialog.Close asChild key={i}>
+			{choices.map((choice, i) => {
+				const Button = () => (
 					<button onClick={() => setWord(choice)} className="w-60 bg-gray-200">
 						{choice}
 					</button>
-				</Dialog.Close>
-			))}
+				);
+
+				return isCategories ? (
+					<Button key={i} />
+				) : (
+					<Dialog.Close key={i}>
+						<Button />
+					</Dialog.Close>
+				);
+			})}
 		</div>
 	);
 }
