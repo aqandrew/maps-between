@@ -47,14 +47,13 @@ export default function MessageSlot({
 			<Dialog.Portal>
 				<Dialog.Overlay />
 
-				<Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-60 flex flex-col border-2 bg-white">
+				<Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[640px] border-2 bg-white">
 					<Dialog.Title className="text-center underline">{label}</Dialog.Title>
 
 					{/* TODO add dialog description */}
 					<Dialog.Description />
 
-					{/* TODO max-h-full isn't quite the right rule to limit WordList height */}
-					<div className="max-h-full flex-1 flex gap-10 justify-center mx-10">
+					<div className="flex gap-10 justify-center">
 						{isTemplates ? null : (
 							<WordList choices={CATEGORIES} setWord={setCategory} />
 						)}

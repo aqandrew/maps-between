@@ -11,7 +11,7 @@ export default function WordList({ choices, setWord }: WordListProps) {
 	const isCategories = choices === CATEGORIES;
 
 	return (
-		<div className="flex flex-col items-center gap-2 overflow-y-auto">
+		<div className="h-80 my-3 flex flex-col items-center gap-2 overflow-y-auto">
 			{choices.map((choice, i) => {
 				const Button = () => (
 					<button onClick={() => setWord(choice)} className="w-60 bg-gray-200">
