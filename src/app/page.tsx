@@ -48,7 +48,7 @@ export default function Home() {
 							</Dialog.Description>
 						</VisuallyHidden>
 
-						<Tabs.Root>
+						<Tabs.Root className="flex-1 flex flex-col">
 							<Tabs.List className="flex gap-2">
 								{TABS.map(({ value, label }) => (
 									<Tabs.Trigger
@@ -64,21 +64,12 @@ export default function Home() {
 							{TABS.map(({ value, component }) => {
 								const Component = component;
 								return (
-									<Tabs.Content value={value} key={value}>
+									<Tabs.Content value={value} className="flex-1" key={value}>
 										<Component />
 									</Tabs.Content>
 								);
 							})}
 						</Tabs.Root>
-
-						<div className="flex-1"></div>
-
-						<div className="flex justify-center pb-12">
-							{/* TODO autofocus Finish button when all inputs in Component are filled */}
-							<Dialog.Close asChild>
-								<button className="w-60 p-1 bg-gray-200">Finish</button>
-							</Dialog.Close>
-						</div>
 					</Dialog.Content>
 				</Dialog.Portal>
 			</Dialog.Root>
