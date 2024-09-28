@@ -74,6 +74,7 @@ export default function Home() {
 						<div className="flex-1"></div>
 
 						<div className="flex justify-center pb-12">
+							{/* TODO autofocus Finish button when all inputs in Component are filled */}
 							<Dialog.Close asChild>
 								<button className="w-60 p-1 bg-gray-200">Finish</button>
 							</Dialog.Close>
