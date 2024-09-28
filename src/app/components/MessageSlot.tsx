@@ -39,7 +39,7 @@ export default function MessageSlot({
 						value={string}
 						onChange={(e) => setString(e.target.value)}
 						readOnly
-						className="w-60 border-2 cursor-pointer"
+						className="w-60 border-2 cursor-pointer text-center"
 					/>
 				</Dialog.Trigger>
 			</div>

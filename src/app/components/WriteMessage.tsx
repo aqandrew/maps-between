@@ -22,8 +22,7 @@ export default function WriteMessage() {
 			<div className="flex justify-center mt-6 mx-12 mb-5 border-b-2">
 				<span className="min-h-[1lh] text-lg">{message}</span>
 			</div>
-			{/* TODO align MessageSlot inputs with Finish button */}
-			<div className="grid grid-cols-[auto_1fr] gap-y-1 gap-x-16">
+			<div className="grid grid-cols-[1fr_240px_1fr] gap-y-1 gap-x-16">
 				<MessageSlot
 					id="template"
 					label="Templates"
