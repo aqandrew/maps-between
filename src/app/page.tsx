@@ -1,8 +1,10 @@
-import { FC } from 'react';
+'use client';
+
+import { FC, ReactNode, useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import * as Tabs from '@radix-ui/react-tabs';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
-import WriteMessage from '@/app/components/WriteMessage';
+import WriteMessage, { WriteMessageProps } from '@/app/components/WriteMessage';
 import MessagesWritten from '@/app/components/MessagesWritten';
 import MessagesDiscovered from '@/app/components/MessagesDiscovered';
 
@@ -27,9 +29,14 @@ const TABS: Array<Tab> = [
 ];
 
 export default function Home() {
+	const [isMessagesModalOpen, setIsMessagesModalOpen] = useState(false);
+
 	return (
 		<main>
-			<Dialog.Root>
+			<Dialog.Root
+				open={isMessagesModalOpen}
+				onOpenChange={setIsMessagesModalOpen}
+			>
 				<Dialog.Trigger asChild>
 					<button className="p-2 bg-gray-200">Messages</button>
 				</Dialog.Trigger>
@@ -62,10 +69,17 @@ export default function Home() {
 							</Tabs.List>
 
 							{TABS.map(({ value, component }) => {
-								const Component = component;
+								const props = {
+									...(value === 'write-message' && {
+										onSubmit: () => setIsMessagesModalOpen(false),
+									}),
+								};
+								const Component = component as (
+									props: WriteMessageProps
+								) => ReactNode;
 								return (
 									<Tabs.Content value={value} className="flex-1" key={value}>
-										<Component />
+										<Component {...props} />
 									</Tabs.Content>
 								);
 							})}
