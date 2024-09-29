@@ -49,7 +49,7 @@ export default function Home() {
 						</VisuallyHidden>
 
 						<Tabs.Root className="flex-1 flex flex-col">
-							<Tabs.List className="flex gap-2">
+							<Tabs.List className="flex gap-2 border-y-2">
 								{TABS.map(({ value, label }) => (
 									<Tabs.Trigger
 										value={value}
