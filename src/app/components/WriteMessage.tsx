@@ -1,5 +1,3 @@
-'use client';
-
 import { useState } from 'react';
 import { writeMessage } from '@/app/lib/actions';
 import MessageSlot from '@/app/components/MessageSlot';
