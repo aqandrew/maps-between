@@ -51,7 +51,7 @@ export default function WriteMessage({ onSubmit }: WriteMessageProps) {
 			<div className="flex justify-center pb-12">
 				{/* TODO autofocus Finish button when all inputs in Component are filled */}
 				<button
-					className="w-60 p-1 bg-gray-200 disabled:opacity-50"
+					className="w-60 p-1 bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
 					disabled={!(template && word)}
 				>
 					Finish
