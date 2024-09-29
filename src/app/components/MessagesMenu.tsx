@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { FC, ReactNode, useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import * as Tabs from '@radix-ui/react-tabs';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
@@ -11,7 +11,7 @@ import MessagesDiscovered from '@/app/components/MessagesDiscovered';
 type Tab = {
 	value: string;
 	label: string;
-	component: React.FC;
+	component: FC;
 };
 
 const TABS: Array<Tab> = [
@@ -75,7 +75,7 @@ export default function MessagesDialog() {
 							};
 							const Component = component as (
 								props: WriteMessageProps
-							) => React.ReactNode;
+							) => ReactNode;
 							return (
 								<Tabs.Content value={value} className="flex-1" key={value}>
 									<Component {...props} />
