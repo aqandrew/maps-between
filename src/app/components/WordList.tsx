@@ -13,17 +13,22 @@ export default function WordList({ choices, setWord }: WordListProps) {
 	return (
 		<div className="h-80 my-3 flex flex-col items-center gap-2 overflow-y-auto">
 			{choices.map((choice, i) => {
-				const Button = () => (
-					<button onClick={() => setWord(choice)} className="w-60 bg-gray-200">
+				// TODO is there a way to DRY up this return without drilling setIsMessagesModalOpen as a prop?
+				return isCategories ? (
+					<button
+						onClick={() => setWord(choice)}
+						className="w-60 bg-gray-200"
+						key={i}
+					>
 						{choice}
 					</button>
-				);
-
-				return isCategories ? (
-					<Button key={i} />
 				) : (
-					<Dialog.Close key={i}>
-						<Button />
+					<Dialog.Close
+						onClick={() => setWord(choice)}
+						className="w-60 bg-gray-200"
+						key={i}
+					>
+						{choice}
 					</Dialog.Close>
 				);
 			})}
