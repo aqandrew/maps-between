@@ -2,7 +2,7 @@
 
 import { APIProvider, Map } from '@vis.gl/react-google-maps';
 
-export default function MapArea() {
+export default function GoogleMap() {
 	return (
 		<APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY!}>
 			<Map
