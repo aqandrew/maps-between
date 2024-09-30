@@ -1,8 +1,9 @@
 'use client';
 
-import { AdvancedMarker, APIProvider, Map } from '@vis.gl/react-google-maps';
+import { APIProvider, Map } from '@vis.gl/react-google-maps';
 import { SplitLayout } from '@googlemaps/extended-component-library/react';
 import Sidebar from '@/app/components/Sidebar';
+import Marker from '@/app/components/Marker';
 
 const chargingBullLocation: google.maps.LatLngLiteral = {
 	lat: 40.705576,
@@ -24,11 +25,7 @@ export default function GoogleMap() {
 						gestureHandling={'greedy'}
 						disableDefaultUI={false}
 					>
-						<AdvancedMarker
-							position={chargingBullLocation}
-							clickable={true}
-							onClick={() => console.log('marker clicked')}
-						/>
+						<Marker position={chargingBullLocation} />
 					</Map>
 				</div>
 			</SplitLayout>
