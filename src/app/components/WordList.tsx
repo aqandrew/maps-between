@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
-import { CATEGORIES } from '@/constants';
+import { CATEGORIES } from '@/app/lib/constants';
 
 interface WordListProps {
 	choices: Array<string>;

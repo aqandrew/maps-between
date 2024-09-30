@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction, useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
-import { CATEGORIES, TEMPLATES, WORDS } from '@/constants';
+import { CATEGORIES, TEMPLATES, WORDS } from '@/app/lib/constants';
 import WordList from '@/app/components/WordList';
 
 interface MessageSlotProps {
