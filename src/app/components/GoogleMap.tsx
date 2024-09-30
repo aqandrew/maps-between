@@ -23,7 +23,6 @@ export default function GoogleMap() {
 						mapId={'3a9db3895a3964fd'}
 						defaultZoom={2}
 						gestureHandling={'greedy'}
-						disableDefaultUI={false}
 					>
 						<Marker position={chargingBullLocation} />
 					</Map>
