@@ -35,7 +35,7 @@ export default function MessagesDialog() {
 			onOpenChange={setIsMessagesModalOpen}
 		>
 			<Dialog.Trigger asChild>
-				<button className="p-2 bg-gray-200">Messages</button>
+				<button className="p-2 bg-gray-200 rounded">Messages</button>
 			</Dialog.Trigger>
 
 			<Dialog.Portal>
