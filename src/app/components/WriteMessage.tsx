@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { writeMessage } from '@/app/lib/actions';
+import { useMapStore } from '@/app/lib/store';
 import MessageSlot from '@/app/components/MessageSlot';
 
 function createMessage(template: string, word: string) {
@@ -15,13 +16,14 @@ export interface WriteMessageProps {
 }
 
 export default function WriteMessage({ onSubmit }: WriteMessageProps) {
+	const location = useMapStore((state) => state.location!);
 	const [template, setTemplate] = useState('');
 	const [word, setWord] = useState('');
 
 	const message = word ? createMessage(template, word) : template;
 
 	async function handleSubmit() {
-		await writeMessage(message);
+		await writeMessage({ message, location });
 		onSubmit?.();
 	}
 
