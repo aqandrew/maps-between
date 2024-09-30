@@ -8,16 +8,32 @@ interface Props {
 export default function Marker({ position }: Props) {
 	const map = useMap('gmap');
 	const setLocation = useMapStore((state) => state.setLocation);
+	const setIsStreetView = useMapStore((state) => state.setIsStreetView);
 
 	function openStreetView() {
 		if (!map) return;
 
-		// TODO add a visible_changed listener to setLocation back to undefined when exiting street view
-		// https://developers.google.com/maps/documentation/javascript/reference/street-view#StreetViewPanorama.visible_changed
 		const panorama = map.getStreetView();
+
+		panorama.addListener('visible_changed', () => {
+			if (!panorama.getVisible()) {
+				setLocation(undefined);
+				setIsStreetView(false);
+			}
+		});
+
+		panorama.addListener('position_changed', () => {
+			const { latLng } = panorama.getLocation() ?? {};
+
+			if (latLng) {
+				setLocation({ lat: latLng.lat(), lng: latLng.lng() });
+			}
+		});
+
 		panorama.setPosition(position);
 		panorama.setVisible(true);
 		setLocation(position);
+		setIsStreetView(true);
 	}
 
 	return (

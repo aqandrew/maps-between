@@ -1,10 +1,13 @@
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 
+type Location = google.maps.LatLngLiteral | undefined;
+
 interface MapState {
-	location: google.maps.LatLngLiteral | undefined;
+	location: Location;
 	isStreetView: boolean;
-	setLocation: (location: google.maps.LatLngLiteral) => void;
+	setLocation: (location: Location) => void;
+	setIsStreetView: (isStreetView: boolean) => void;
 }
 
 export const useMapStore = create<MapState>()(
@@ -12,5 +15,6 @@ export const useMapStore = create<MapState>()(
 		location: undefined,
 		isStreetView: false,
 		setLocation: (location) => set(() => ({ location })),
+		setIsStreetView: (isStreetView) => set(() => ({ isStreetView })),
 	}))
 );
