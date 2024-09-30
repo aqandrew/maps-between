@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import { EB_Garamond } from 'next/font/google';
+import clsx from 'clsx';
 import './globals.css';
 
 const ebGaramond = EB_Garamond({ subsets: ['latin'] });
@@ -16,8 +17,8 @@ export default function RootLayout({
 	children: ReactNode;
 }>) {
 	return (
-		<html lang="en">
-			<body className={ebGaramond.className}>{children}</body>
+		<html lang="en" className="h-full">
+			<body className={clsx('h-full', ebGaramond.className)}>{children}</body>
 		</html>
 	);
 }
