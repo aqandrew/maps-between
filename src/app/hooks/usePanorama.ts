@@ -1,8 +1,9 @@
 import { useMap } from '@vis.gl/react-google-maps';
+import { MAP_ID } from '@/app/lib/constants';
 import { useMapStore } from '@/app/lib/store';
 
 export function usePanorama() {
-	const map = useMap('gmap');
+	const map = useMap(MAP_ID);
 	const setLocation = useMapStore((state) => state.setLocation);
 	const setIsStreetView = useMapStore((state) => state.setIsStreetView);
 

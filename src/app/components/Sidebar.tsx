@@ -2,10 +2,11 @@ import { useEffect, useRef, useState } from 'react';
 import { useMap } from '@vis.gl/react-google-maps';
 import { PlacePicker as TPlacePicker } from '@googlemaps/extended-component-library/place_picker.js';
 import { PlacePicker } from '@googlemaps/extended-component-library/react';
+import { MAP_ID } from '@/app/lib/constants';
 import MessagesMenu from '@/app/components/MessagesMenu';
 
 export default function Sidebar() {
-	const map = useMap('gmap');
+	const map = useMap(MAP_ID);
 	const pickerRef = useRef<TPlacePicker>(null);
 	const [place, setPlace] = useState<google.maps.places.Place | undefined>(
 		undefined
@@ -24,7 +25,7 @@ export default function Sidebar() {
 			<PlacePicker
 				className="block"
 				ref={pickerRef}
-				forMap="gmap"
+				forMap={MAP_ID}
 				placeholder="Search"
 				onPlaceChange={() => {
 					setPlace(pickerRef.current?.value ?? undefined);

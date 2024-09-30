@@ -1,3 +1,5 @@
+export const MAP_ID = 'gmap';
+
 export const TEMPLATES = [
 	'**** ahead',
 	'No **** ahead',
