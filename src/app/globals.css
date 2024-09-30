@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+	/* Dialog.Overlay and Dialog.Content */
+	[data-state='open']:has(+ [role='dialog']),
+	[role='dialog'] {
+		z-index: 1;
+	}
+}
