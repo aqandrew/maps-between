@@ -24,7 +24,6 @@ export default function GoogleMap() {
 						defaultZoom={2}
 						gestureHandling={'greedy'}
 					>
-						{/* TODO define message schema to get autocompletion */}
 						{messages?.map(({ _id, location }) => (
 							<Marker position={location} key={_id} />
 						))}
