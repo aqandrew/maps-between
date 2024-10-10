@@ -1,5 +1,7 @@
 'use server';
 
+import { auth } from '@clerk/nextjs/server';
+
 export async function writeMessage({
 	message,
 	location,
@@ -7,5 +9,11 @@ export async function writeMessage({
 	message: string;
 	location: google.maps.LatLngLiteral;
 }) {
-	console.log('TODO: write message w/location to db:', message, location);
+	const { userId } = auth();
+
+	console.log('TODO: write to db:', {
+		message,
+		location,
+		userId,
+	});
 }
