@@ -2,16 +2,15 @@
 
 import { APIProvider, Map } from '@vis.gl/react-google-maps';
 import { SplitLayout } from '@googlemaps/extended-component-library/react';
+import { useQuery } from 'convex/react';
 import { MAP_ID } from '@/app/lib/constants';
 import Sidebar from '@/app/components/Sidebar';
 import Marker from '@/app/components/Marker';
-
-const chargingBullLocation: google.maps.LatLngLiteral = {
-	lat: 40.705576,
-	lng: -74.013421,
-};
+import { api } from '../../../convex/_generated/api';
 
 export default function GoogleMap() {
+	const messages = useQuery(api.messages.get);
+
 	return (
 		<APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY!}>
 			<SplitLayout>
@@ -25,7 +24,10 @@ export default function GoogleMap() {
 						defaultZoom={2}
 						gestureHandling={'greedy'}
 					>
-						<Marker position={chargingBullLocation} />
+						{/* TODO define message schema to get autocompletion */}
+						{messages?.map(({ _id, location }) => (
+							<Marker position={location} key={_id} />
+						))}
 					</Map>
 				</div>
 			</SplitLayout>

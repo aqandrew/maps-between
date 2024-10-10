@@ -15,6 +15,8 @@ export default function Marker({ position }: Props) {
 		}
 	}
 
+	// TODO preview message text on hover?
+
 	return (
 		<AdvancedMarker
 			position={position}
