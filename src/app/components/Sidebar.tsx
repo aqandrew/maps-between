@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
 import { useMap } from '@vis.gl/react-google-maps';
 import { PlacePicker as TPlacePicker } from '@googlemaps/extended-component-library/place_picker.js';
 import { PlacePicker } from '@googlemaps/extended-component-library/react';
@@ -31,7 +32,17 @@ export default function Sidebar() {
 					setPlace(pickerRef.current?.value ?? undefined);
 				}}
 			/>
-			<MessagesMenu />
+
+			<SignedOut>
+				<SignInButton>
+					<button className="p-2 bg-gray-200 rounded">Sign in</button>
+				</SignInButton>
+			</SignedOut>
+
+			<SignedIn>
+				<MessagesMenu />
+				<UserButton />
+			</SignedIn>
 		</div>
 	);
 }

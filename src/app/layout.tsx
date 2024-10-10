@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import { EB_Garamond } from 'next/font/google';
+import { ClerkProvider } from '@clerk/nextjs';
 import clsx from 'clsx';
 import './globals.css';
 
@@ -17,8 +18,10 @@ export default function RootLayout({
 	children: ReactNode;
 }>) {
 	return (
-		<html lang="en" className="h-full">
-			<body className={clsx('h-full', ebGaramond.className)}>{children}</body>
-		</html>
+		<ClerkProvider>
+			<html lang="en" className="h-full">
+				<body className={clsx('h-full', ebGaramond.className)}>{children}</body>
+			</html>
+		</ClerkProvider>
 	);
 }
