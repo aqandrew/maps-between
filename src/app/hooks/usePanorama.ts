@@ -7,9 +7,7 @@ export function usePanorama() {
 	const setLocation = useMapStore((state) => state.setLocation);
 	const setIsStreetView = useMapStore((state) => state.setIsStreetView);
 
-	if (!map) return;
-
-	const panorama = map.getStreetView();
+	const panorama = map!.getStreetView();
 
 	panorama.addListener('visible_changed', () => {
 		const isVisible = panorama.getVisible();
@@ -28,5 +26,10 @@ export function usePanorama() {
 		}
 	});
 
-	return panorama;
+	function openStreetView(position: google.maps.LatLngLiteral) {
+		panorama.setPosition(position);
+		panorama.setVisible(true);
+	}
+
+	return { openStreetView };
 }

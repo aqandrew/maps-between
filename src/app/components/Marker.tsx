@@ -14,14 +14,7 @@ interface MarkerProps {
 export default function Marker({ position, message }: MarkerProps) {
 	const [markerRef, marker] = useAdvancedMarkerRef();
 	const [isHovering, setIsHovering] = useState(false);
-	const panorama = usePanorama();
-
-	function openStreetView() {
-		if (panorama) {
-			panorama.setPosition(position);
-			panorama.setVisible(true);
-		}
-	}
+	const { openStreetView } = usePanorama();
 
 	return (
 		<>
@@ -29,7 +22,7 @@ export default function Marker({ position, message }: MarkerProps) {
 				ref={markerRef}
 				position={position}
 				clickable={true}
-				onClick={openStreetView}
+				onClick={() => openStreetView(position)}
 				onMouseEnter={() => setIsHovering(true)}
 				onMouseLeave={() => setIsHovering(false)}
 			/>
