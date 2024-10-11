@@ -6,12 +6,12 @@ import {
 } from '@vis.gl/react-google-maps';
 import { usePanorama } from '@/app/hooks/usePanorama';
 
-interface Props {
+interface MarkerProps {
 	position: google.maps.LatLngLiteral;
 	message: string;
 }
 
-export default function Marker({ position, message }: Props) {
+export default function Marker({ position, message }: MarkerProps) {
 	const [markerRef, marker] = useAdvancedMarkerRef();
 	const [isHovering, setIsHovering] = useState(false);
 	const panorama = usePanorama();

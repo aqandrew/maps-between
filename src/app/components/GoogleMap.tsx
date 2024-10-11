@@ -7,11 +7,11 @@ import Sidebar from '@/app/components/Sidebar';
 import Marker from '@/app/components/Marker';
 import { Doc } from '../../../convex/_generated/dataModel';
 
-interface Props {
+interface GoogleMapProps {
 	messages: Array<Doc<'messages'>>;
 }
 
-export default function GoogleMap({ messages }: Props) {
+export default function GoogleMap({ messages }: GoogleMapProps) {
 	return (
 		<APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY!}>
 			<SplitLayout>
