@@ -1,9 +1,8 @@
-import { fetchQuery } from 'convex/nextjs';
-import { api } from '../../convex/_generated/api';
+import { getAllMessages } from '@/app/lib/actions';
 import GoogleMap from '@/app/components/GoogleMap';
 
 export default async function Home() {
-	const messages = await fetchQuery(api.messages.get);
+	const messages = await getAllMessages();
 
 	return (
 		<main className="h-full">
