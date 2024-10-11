@@ -1,12 +1,8 @@
 'use server';
 
 import { auth } from '@clerk/nextjs/server';
-import { fetchMutation, fetchQuery } from 'convex/nextjs';
+import { fetchMutation } from 'convex/nextjs';
 import { api } from '../../../convex/_generated/api';
-
-export async function getAllMessages() {
-	return fetchQuery(api.messages.get);
-}
 
 export async function writeMessage({
 	message,
