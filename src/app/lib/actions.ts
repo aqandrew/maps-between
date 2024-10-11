@@ -1,6 +1,8 @@
 'use server';
 
 import { auth } from '@clerk/nextjs/server';
+import { fetchMutation } from 'convex/nextjs';
+import { api } from '../../../convex/_generated/api';
 
 export async function writeMessage({
 	message,
@@ -11,9 +13,5 @@ export async function writeMessage({
 }) {
 	const { userId } = auth();
 
-	console.log('TODO: write to db:', {
-		message,
-		location,
-		userId,
-	});
+	await fetchMutation(api.messages.add, { location, message, userId: userId! });
 }

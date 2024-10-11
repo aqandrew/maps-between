@@ -1,8 +1,6 @@
 import { useState } from 'react';
-import { useMutation } from 'convex/react';
-import { useUser } from '@clerk/nextjs';
-import { api } from '../../../convex/_generated/api';
 import { useMapStore } from '@/app/lib/store';
+import { writeMessage } from '@/app/lib/actions';
 import MessageSlot from '@/app/components/MessageSlot';
 
 function createMessage(template: string, word: string) {
@@ -18,8 +16,6 @@ export interface WriteMessageProps {
 }
 
 export default function WriteMessage({ onSubmit }: WriteMessageProps) {
-	const writeMessage = useMutation(api.messages.add);
-	const { user } = useUser();
 	const location = useMapStore((state) => state.location!);
 	const [template, setTemplate] = useState('');
 	const [word, setWord] = useState('');
@@ -27,7 +23,7 @@ export default function WriteMessage({ onSubmit }: WriteMessageProps) {
 	const message = word ? createMessage(template, word) : template;
 
 	async function handleSubmit() {
-		await writeMessage({ message, location, userId: user!.id });
+		await writeMessage({ message, location });
 		onSubmit?.();
 	}
 
