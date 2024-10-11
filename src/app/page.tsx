@@ -1,9 +1,12 @@
+import { getAllMessages } from '@/app/lib/actions';
 import GoogleMap from '@/app/components/GoogleMap';
 
-export default function Home() {
+export default async function Home() {
+	const messages = await getAllMessages();
+
 	return (
 		<main className="h-full">
-			<GoogleMap />
+			<GoogleMap messages={messages} />
 		</main>
 	);
 }

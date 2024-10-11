@@ -5,13 +5,13 @@ import { SplitLayout } from '@googlemaps/extended-component-library/react';
 import { MAP_ID } from '@/app/lib/constants';
 import Sidebar from '@/app/components/Sidebar';
 import Marker from '@/app/components/Marker';
+import { Doc } from '../../../convex/_generated/dataModel';
 
-const chargingBullLocation: google.maps.LatLngLiteral = {
-	lat: 40.705576,
-	lng: -74.013421,
-};
+interface GoogleMapProps {
+	messages: Array<Doc<'messages'>>;
+}
 
-export default function GoogleMap() {
+export default function GoogleMap({ messages }: GoogleMapProps) {
 	return (
 		<APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY!}>
 			<SplitLayout>
@@ -25,7 +25,9 @@ export default function GoogleMap() {
 						defaultZoom={2}
 						gestureHandling={'greedy'}
 					>
-						<Marker position={chargingBullLocation} />
+						{messages?.map(({ _id, location, message }) => (
+							<Marker position={location} message={message} key={_id} />
+						))}
 					</Map>
 				</div>
 			</SplitLayout>

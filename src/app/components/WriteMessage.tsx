@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { writeMessage } from '@/app/lib/actions';
 import { useMapStore } from '@/app/lib/store';
+import { writeMessage } from '@/app/lib/actions';
 import MessageSlot from '@/app/components/MessageSlot';
 
 function createMessage(template: string, word: string) {
