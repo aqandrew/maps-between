@@ -24,8 +24,8 @@ export default function GoogleMap() {
 						defaultZoom={2}
 						gestureHandling={'greedy'}
 					>
-						{messages?.map(({ _id, location }) => (
-							<Marker position={location} key={_id} />
+						{messages?.map(({ _id, location, message }) => (
+							<Marker position={location} message={message} key={_id} />
 						))}
 					</Map>
 				</div>
