@@ -15,6 +15,7 @@ export function usePanorama() {
 
 		if (!isVisible) {
 			setLocation(undefined);
+			panorama.setPov({ heading: 0, pitch: 0 });
 		}
 	});
 
