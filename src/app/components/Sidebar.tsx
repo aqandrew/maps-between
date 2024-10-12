@@ -10,7 +10,7 @@ export default function Sidebar() {
 	const map = useMap(MAP_ID);
 	const pickerRef = useRef<TPlacePicker>(null);
 	const [place, setPlace] = useState<google.maps.places.Place | undefined>(
-		undefined
+		undefined,
 	);
 
 	useEffect(() => {
@@ -35,7 +35,9 @@ export default function Sidebar() {
 
 			<SignedOut>
 				<SignInButton>
-					<button className="p-2 bg-gray-200 rounded">Sign in</button>
+					<button className="p-2 bg-gray-200 rounded">
+						Sign in to write messages
+					</button>
 				</SignInButton>
 			</SignedOut>
 
