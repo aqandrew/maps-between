@@ -9,11 +9,6 @@ import {
 import { useMapStore } from '@/app/lib/store';
 import { usePanorama } from '@/app/hooks/usePanorama';
 
-const MESSAGE_ICON =
-	'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text x="2em" y="4.9em" font-size="20">📓</text></svg>';
-const MESSAGE_ICON_STREET_VIEW =
-	'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">📓</text></svg>';
-
 interface MarkerProps {
 	position: google.maps.LatLngLiteral;
 	message: string;
@@ -24,6 +19,11 @@ export default function Marker({ position, message }: MarkerProps) {
 	const [markerRef, marker] = useAdvancedMarkerRef();
 	const [isHovering, setIsHovering] = useState(false);
 	const { openStreetView } = usePanorama();
+
+	const messageIconProps = isStreetView
+		? { x: undefined, y: '0.9em', fontSize: 90 }
+		: { x: '2em', y: '4.9em', fontSize: 20 };
+	const messageIcon = `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text x="${messageIconProps.x}" y="${messageIconProps.y}" font-size="${messageIconProps.fontSize}">📓</text></svg>`;
 
 	return (
 		<>
@@ -51,11 +51,7 @@ export default function Marker({ position, message }: MarkerProps) {
 
 			{/* need to also use deprecated Marker class for icons to be visible in street view */}
 			{/* https://developers.google.com/maps/documentation/javascript/examples/streetview-overlays */}
-			<GMMarker
-				position={position}
-				icon={isStreetView ? MESSAGE_ICON_STREET_VIEW : MESSAGE_ICON}
-				zIndex={0}
-			/>
+			<GMMarker position={position} icon={messageIcon} zIndex={0} />
 		</>
 	);
 }
