@@ -31,7 +31,10 @@ export default function Marker({ position, message }: MarkerProps) {
 				ref={markerRef}
 				position={position}
 				clickable={true}
-				onClick={() => openStreetView(position)}
+				onClick={() => {
+					openStreetView(position);
+					setIsHovering(false);
+				}}
 				onMouseEnter={() => setIsHovering(true)}
 				onMouseLeave={() => setIsHovering(false)}
 				zIndex={1}
