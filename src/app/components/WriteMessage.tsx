@@ -17,6 +17,7 @@ export interface WriteMessageProps {
 
 export default function WriteMessage({ onSubmit }: WriteMessageProps) {
 	const location = useMapStore((state) => state.location!);
+	const isStreetView = useMapStore((state) => state.isStreetView);
 	const [template, setTemplate] = useState('');
 	const [word, setWord] = useState('');
 
@@ -25,6 +26,10 @@ export default function WriteMessage({ onSubmit }: WriteMessageProps) {
 	async function handleSubmit() {
 		await writeMessage({ message, location });
 		onSubmit?.();
+	}
+
+	if (!isStreetView) {
+		return <p>You must visit a location in street view to write a message.</p>;
 	}
 
 	return (
