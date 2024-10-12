@@ -8,8 +8,8 @@ export default defineSchema({
 			lng: v.float64(),
 		}),
 		pov: v.object({
-			lat: v.float64(),
-			lng: v.float64(),
+			heading: v.float64(),
+			pitch: v.float64(),
 		}),
 		message: v.string(),
 		userId: v.string(),
