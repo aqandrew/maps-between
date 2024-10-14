@@ -14,7 +14,7 @@ export default function MessagesWritten() {
 			</SignedOut>
 
 			<SignedIn>
-				{/* TODO occupy full modal width while enabling scroll if message list is long */}
+				{/* TODO occupy full modal height while enabling scroll if message list is long */}
 				<ol className="h-96 flex flex-col gap-1 p-4 overflow-y-auto">
 					{userMessages?.map((message) => (
 						<li key={message._id}>
