@@ -6,6 +6,17 @@ export const get = query({
 	handler: async (ctx) => await ctx.db.query('messages').collect(),
 });
 
+export const getForUser = query({
+	args: { userId: v.string() },
+	handler: (ctx, { userId }) => {
+		return ctx.db
+			.query('messages')
+			.withIndex('byUserId', (q) => q.eq('userId', userId))
+			.order('desc')
+			.collect();
+	},
+});
+
 export const add = mutation({
 	args: {
 		message: v.string(),

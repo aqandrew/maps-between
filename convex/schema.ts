@@ -13,7 +13,7 @@ export default defineSchema({
 		}),
 		message: v.string(),
 		userId: v.string(),
-	}),
+	}).index('byUserId', ['userId']),
 	ratings: defineTable({
 		messageId: v.id('messages'),
 		userId: v.string(),
