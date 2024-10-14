@@ -34,3 +34,10 @@ export const add = mutation({
 		await ctx.db.insert('messages', args);
 	},
 });
+
+export const remove = mutation({
+	args: { id: v.id('messages') },
+	handler: async (ctx, { id }) => {
+		await ctx.db.delete(id);
+	},
+});

@@ -1,6 +1,7 @@
 import * as Dialog from '@radix-ui/react-dialog';
 import * as AccessibleIcon from '@radix-ui/react-accessible-icon';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
+import { deleteMessage } from '@/app/lib/actions';
 import { Doc } from '../../../convex/_generated/dataModel';
 
 interface MessageWrittenProps {
@@ -8,7 +9,7 @@ interface MessageWrittenProps {
 }
 
 export default function MessageWritten({
-	message: { message, location },
+	message: { _id, message, location },
 }: MessageWrittenProps) {
 	return (
 		<Dialog.Root>
@@ -58,7 +59,7 @@ export default function MessageWritten({
 					<div className="flex justify-center gap-12 mt-4">
 						<Dialog.Close
 							className="w-60 p-1 bg-gray-200"
-							onClick={() => console.log('TODO remove message')}
+							onClick={() => deleteMessage({ id: _id })}
 						>
 							YES
 						</Dialog.Close>

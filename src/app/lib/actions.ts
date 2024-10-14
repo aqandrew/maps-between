@@ -3,6 +3,7 @@
 import { auth } from '@clerk/nextjs/server';
 import { fetchMutation } from 'convex/nextjs';
 import { api } from '../../../convex/_generated/api';
+import { Id } from '../../../convex/_generated/dataModel';
 
 export async function writeMessage({
 	message,
@@ -20,4 +21,8 @@ export async function writeMessage({
 		message,
 		userId: userId!,
 	});
+}
+
+export async function deleteMessage({ id }: { id: Id<'messages'> }) {
+	await fetchMutation(api.messages.remove, { id });
 }
