@@ -11,10 +11,11 @@ import { usePanorama } from '@/app/hooks/usePanorama';
 
 interface MarkerProps {
 	position: google.maps.LatLngLiteral;
+	pov: google.maps.StreetViewPov;
 	message: string;
 }
 
-export default function Marker({ position, message }: MarkerProps) {
+export default function Marker({ position, pov, message }: MarkerProps) {
 	const isStreetView = useMapStore((state) => state.isStreetView);
 	const [markerRef, marker] = useAdvancedMarkerRef();
 	const [isHovering, setIsHovering] = useState(false);
@@ -32,7 +33,7 @@ export default function Marker({ position, message }: MarkerProps) {
 				position={position}
 				clickable={true}
 				onClick={() => {
-					openStreetView(position);
+					openStreetView({ position, pov });
 					setIsHovering(false);
 				}}
 				onMouseEnter={() => setIsHovering(true)}

@@ -18,13 +18,14 @@ export interface WriteMessageProps {
 export default function WriteMessage({ onSubmit }: WriteMessageProps) {
 	const location = useMapStore((state) => state.location!);
 	const isStreetView = useMapStore((state) => state.isStreetView);
+	const { heading, pitch } = useMapStore((state) => state.pov!);
 	const [template, setTemplate] = useState('');
 	const [word, setWord] = useState('');
 
 	const message = word ? createMessage(template, word) : template;
 
 	async function handleSubmit() {
-		await writeMessage({ message, location });
+		await writeMessage({ message, location, pov: { heading, pitch } });
 		onSubmit?.();
 	}
 

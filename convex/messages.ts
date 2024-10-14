@@ -13,6 +13,10 @@ export const add = mutation({
 			lat: v.float64(),
 			lng: v.float64(),
 		}),
+		pov: v.object({
+			heading: v.float64(),
+			pitch: v.float64(),
+		}),
 		userId: v.string(),
 	},
 	handler: async (ctx, args) => {

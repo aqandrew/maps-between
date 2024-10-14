@@ -7,10 +7,17 @@ import { api } from '../../../convex/_generated/api';
 export async function writeMessage({
 	message,
 	location,
+	pov,
 }: {
 	message: string;
 	location: google.maps.LatLngLiteral;
+	pov: google.maps.StreetViewPov;
 }) {
 	const { userId } = auth();
-	await fetchMutation(api.messages.add, { location, message, userId: userId! });
+	await fetchMutation(api.messages.add, {
+		location,
+		pov,
+		message,
+		userId: userId!,
+	});
 }

@@ -6,6 +6,7 @@ export function usePanorama() {
 	const map = useMap(MAP_ID);
 	const setLocation = useMapStore((state) => state.setLocation);
 	const setIsStreetView = useMapStore((state) => state.setIsStreetView);
+	const setPov = useMapStore((state) => state.setPov);
 
 	const panorama = map!.getStreetView();
 
@@ -27,8 +28,20 @@ export function usePanorama() {
 		}
 	});
 
-	function openStreetView(position: google.maps.LatLngLiteral) {
+	panorama.addListener('pov_changed', () => {
+		const pov = panorama.getPov();
+		setPov(pov);
+	});
+
+	function openStreetView({
+		position,
+		pov,
+	}: {
+		position: google.maps.LatLngLiteral;
+		pov: google.maps.StreetViewPov;
+	}) {
 		panorama.setPosition(position);
+		panorama.setPov(pov);
 		panorama.setVisible(true);
 	}
 
