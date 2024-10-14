@@ -8,14 +8,15 @@ import {
 } from '@vis.gl/react-google-maps';
 import { useMapStore } from '@/app/lib/store';
 import { usePanorama } from '@/app/hooks/usePanorama';
+import { Doc } from '../../../convex/_generated/dataModel';
 
 interface MarkerProps {
-	position: google.maps.LatLngLiteral;
-	pov: google.maps.StreetViewPov;
-	message: string;
+	message: Doc<'messages'>;
 }
 
-export default function Marker({ position, pov, message }: MarkerProps) {
+export default function Marker({
+	message: { location, pov, message },
+}: MarkerProps) {
 	const isStreetView = useMapStore((state) => state.isStreetView);
 	const [markerRef, marker] = useAdvancedMarkerRef();
 	const [isHovering, setIsHovering] = useState(false);
@@ -30,10 +31,10 @@ export default function Marker({ position, pov, message }: MarkerProps) {
 		<>
 			<AdvancedMarker
 				ref={markerRef}
-				position={position}
+				position={location}
 				clickable={true}
 				onClick={() => {
-					openStreetView({ position, pov });
+					openStreetView({ position: location, pov });
 					setIsHovering(false);
 				}}
 				onMouseEnter={() => setIsHovering(true)}
@@ -55,7 +56,7 @@ export default function Marker({ position, pov, message }: MarkerProps) {
 
 			{/* need to also use deprecated Marker class for icons to be visible in street view */}
 			{/* https://developers.google.com/maps/documentation/javascript/examples/streetview-overlays */}
-			<GMMarker position={position} icon={messageIcon} zIndex={0} />
+			<GMMarker position={location} icon={messageIcon} zIndex={0} />
 		</>
 	);
 }

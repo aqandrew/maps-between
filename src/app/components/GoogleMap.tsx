@@ -23,8 +23,8 @@ export default function GoogleMap() {
 					defaultZoom={2}
 					gestureHandling={'greedy'}
 				>
-					{messages?.map(({ _id, location, pov, message }) => (
-						<Marker position={location} pov={pov} message={message} key={_id} />
+					{messages?.map((message) => (
+						<Marker message={message} key={message._id} />
 					))}
 				</Map>
 			</div>
