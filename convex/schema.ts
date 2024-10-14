@@ -14,4 +14,9 @@ export default defineSchema({
 		message: v.string(),
 		userId: v.string(),
 	}),
+	ratings: defineTable({
+		messageId: v.id('messages'),
+		userId: v.string(),
+		isGood: v.boolean(),
+	}).index('byMessageId', ['messageId']),
 });
