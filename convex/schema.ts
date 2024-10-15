@@ -11,6 +11,7 @@ export default defineSchema({
 			heading: v.float64(),
 			pitch: v.float64(),
 		}),
+		placeName: v.string(),
 		message: v.string(),
 		userId: v.string(),
 	}).index('byUserId', ['userId']),

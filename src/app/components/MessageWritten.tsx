@@ -9,7 +9,7 @@ interface MessageWrittenProps {
 }
 
 export default function MessageWritten({
-	message: { _id, message, location },
+	message: { _id, message, placeName },
 }: MessageWrittenProps) {
 	return (
 		<Dialog.Root>
@@ -28,8 +28,7 @@ export default function MessageWritten({
 
 				<div className="flex-1">
 					<p className="border-b-2">{message}</p>
-					{/* TODO display human-friendly location */}
-					<p>{JSON.stringify(location)}</p>
+					<p>{placeName}</p>
 
 					<dl className="flex gap-16 w-fit ml-auto">
 						<div className="flex gap-10">
