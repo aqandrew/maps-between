@@ -42,6 +42,7 @@ export function usePanorama() {
 	}) {
 		panorama.setPosition(position);
 		panorama.setPov(pov);
+		panorama.setZoom(0);
 		panorama.setVisible(true);
 	}
 
